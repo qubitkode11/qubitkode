@@ -1,0 +1,258 @@
+.offer-overlay {
+    position: fixed;
+    inset: 0;
+    z-index: 99999;
+    /* Ensure it's above everything */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 1rem;
+    pointer-events: none;
+    /* Let clicks pass through to child elements if needed, but not necessary since backdrop catches it */
+}
+
+.offer-backdrop {
+    position: absolute;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.75);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    animation: fadeIn 0.4s ease forwards;
+    pointer-events: auto;
+}
+
+.offer-modal {
+    position: relative;
+    background: #0d0d0d;
+    border: 1px solid rgba(0, 212, 255, 0.3);
+    border-radius: 20px;
+    width: 100%;
+    max-width: 480px;
+    padding: 2rem;
+    box-shadow: 0 30px 60px -15px rgba(0, 0, 0, 0.6), 0 0 50px rgba(123, 47, 255, 0.15);
+    animation: modalSlideUp 0.5s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+    overflow: hidden;
+    text-align: center;
+    pointer-events: auto;
+}
+
+/* Animated Gradient Border Effect */
+.offer-modal::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: conic-gradient(from 0deg at 50% 50%, transparent 0deg, rgba(0, 212, 255, 0.4) 90deg, transparent 180deg, rgba(123, 47, 255, 0.4) 270deg, transparent 360deg);
+    animation: rotate 8s linear infinite;
+    pointer-events: none;
+    z-index: 0;
+}
+
+.offer-modal::after {
+    content: '';
+    position: absolute;
+    inset: 2px;
+    background: #0a0a0a;
+    border-radius: 18px;
+    z-index: 1;
+}
+
+.offer-close {
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    color: var(--text-muted);
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    z-index: 10;
+    transition: all 0.2s ease;
+}
+
+.offer-close:hover {
+    background: rgba(255, 255, 255, 0.15);
+    color: white;
+    transform: rotate(90deg);
+}
+
+.offer-content {
+    position: relative;
+    z-index: 2;
+    /* Place content above the ::after background */
+}
+
+/* Badge */
+.offer-badge {
+    display: inline-block;
+    background: rgba(123, 47, 255, 0.15);
+    color: #b388ff;
+    padding: 0.4rem 1rem;
+    border-radius: 20px;
+    font-size: 0.7rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.15em;
+    margin-bottom: 1.25rem;
+    border: 1px solid rgba(123, 47, 255, 0.3);
+    box-shadow: 0 0 20px rgba(123, 47, 255, 0.2);
+}
+
+/* Typography */
+.offer-title {
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 2rem;
+    font-weight: 800;
+    color: white;
+    margin-bottom: 0.25rem;
+    line-height: 1.2;
+    letter-spacing: -0.02em;
+}
+
+.offer-subtitle {
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 1.25rem;
+    font-weight: 800;
+    margin-bottom: 1rem;
+    letter-spacing: 0.05em;
+}
+
+.offer-desc {
+    color: var(--text-muted);
+    font-size: 0.95rem;
+    line-height: 1.5;
+    margin-bottom: 1.5rem;
+}
+
+/* Feature List */
+.offer-features {
+    display: flex;
+    flex-direction: column;
+    gap: 0.6rem;
+    margin-bottom: 1.5rem;
+    text-align: left;
+    background: rgba(255, 255, 255, 0.03);
+    padding: 1rem;
+    border-radius: 12px;
+    border: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.offer-feat {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    color: #e0e0e0;
+    font-size: 0.9rem;
+    font-weight: 500;
+}
+
+.feat-check {
+    color: #00ff88;
+    background: rgba(0, 255, 136, 0.1);
+    width: 20px;
+    height: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    font-size: 0.75rem;
+    font-weight: bold;
+    flex-shrink: 0;
+}
+
+/* Buttons */
+.offer-actions {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+    
+}
+
+.offer-btn {
+    width: 100%;
+    text-align: center;
+    justify-content: center;
+    text-decoration: none;
+    font-size: 1.1rem;
+    letter-spacing: 0.05em;
+    padding: 0.75rem;
+}
+
+.offer-btn-sec {
+    background: transparent;
+    border: none;
+    color: var(--text-muted);
+    font-size: 0.9rem;
+    cursor: pointer;
+    text-decoration: underline;
+    text-underline-offset: 4px;
+    text-decoration-color: rgba(255, 255, 255, 0.2);
+    transition: all 0.2s ease;
+    padding: 0.25rem;
+    
+    
+}
+
+.offer-btn-sec:hover {
+    color: white;
+    text-decoration-color: white;
+}
+
+/* Animations */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1;
+    }
+}
+
+@keyframes modalSlideUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px) scale(0.95);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+    }
+}
+
+@keyframes rotate {
+    from {
+        transform: rotate(0deg);
+    }
+
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+/* Responsiveness */
+@media (max-width: 500px) {
+    .offer-modal {
+        padding: 1.5rem 1.25rem;
+    }
+
+    .offer-title {
+        font-size: 1.6rem;
+    }
+
+    .offer-subtitle {
+        font-size: 1.1rem;
+    }
+
+    .offer-features {
+        padding: 1rem;
+    }
+}

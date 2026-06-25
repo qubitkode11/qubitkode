@@ -1,0 +1,380 @@
+.contact-page {
+    padding-top: 80px;
+    /* Offset for navbar */
+    color: var(--text-primary);
+    background: var(--bg-primary);
+    min-height: 100vh;
+}
+
+.cp-container {
+    max-width: 100%;
+    margin: 0 auto;
+    padding: 0 2rem;
+}
+
+/* Hero Section */
+.cp-hero {
+    position: relative;
+    padding: 8rem 0 6rem;
+    text-align: center;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+    overflow: hidden;
+}
+
+.cp-hero-bg {
+    position: absolute;
+    top: -20%;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 60vw;
+    height: 60vw;
+    background: radial-gradient(circle, rgba(123, 47, 255, 0.15) 0%, transparent 60%);
+    filter: blur(100px);
+    z-index: 0;
+    pointer-events: none;
+}
+
+.cp-title {
+    font-size: clamp(2.5rem, 5vw, 4rem);
+    font-weight: 800;
+    line-height: 1.1;
+    margin: 1rem 0;
+    position: relative;
+    z-index: 1;
+}
+
+.cp-subtitle {
+    font-size: 1.2rem;
+    color: var(--text-secondary);
+    line-height: 1.7;
+    margin-top: 1.5rem;
+    max-width: 700px;
+    margin-left: auto;
+    margin-right: auto;
+    position: relative;
+    z-index: 1;
+}
+
+/* Main Section Background */
+.cp-section {
+    padding: 5rem 0;
+    position: relative;
+    background: linear-gradient(180deg, transparent 0%, rgba(6, 13, 20, 0.6) 100%);
+}
+
+.cp-grid {
+    display: grid;
+    grid-template-columns: 1fr 1.3fr;
+    gap: 3rem;
+    align-items: stretch;
+}
+
+.cp-info-col,
+.cp-form-col {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+}
+
+/* Cards */
+.cp-card {
+    background: rgba(255, 255, 255, 0.02);
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    border-radius: 16px;
+    padding: 3rem;
+    backdrop-filter: blur(20px);
+}
+
+.cp-card h3 {
+    font-size: 1.5rem;
+    font-weight: 700;
+    margin-bottom: 0.5rem;
+    color: #fff;
+}
+
+.cp-card p {
+    color: var(--text-secondary);
+    font-size: 0.95rem;
+    margin-bottom: 2rem;
+}
+
+/* Direct Contact Methods */
+.contact-methods {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+}
+
+.method-pt {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    text-decoration: none;
+    padding: 1rem;
+    border-radius: 12px;
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid transparent;
+    transition: var(--transition);
+}
+
+.method-pt:hover {
+    background: rgba(0, 212, 255, 0.05);
+    border-color: rgba(0, 212, 255, 0.3);
+    transform: translateX(5px);
+}
+
+.method-icon {
+    width: 48px;
+    height: 48px;
+    border-radius: 12px;
+    background: rgba(0, 212, 255, 0.1);
+    color: var(--cyan);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.method-icon.whatsapp {
+    background: rgba(37, 211, 102, 0.1);
+    color: #25d366;
+}
+
+.method-label {
+    display: block;
+    font-size: 0.8rem;
+    color: var(--text-muted);
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    margin-bottom: 0.2rem;
+}
+
+.method-val {
+    display: block;
+    color: var(--text-primary);
+    font-size: 1.1rem;
+    font-weight: 500;
+    word-break: break-word;
+}
+
+/* Form Styles Override for Page */
+.cp-form-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.5rem;
+}
+
+.cp-submit {
+    width: 100%;
+    margin-top: 1rem;
+    padding: 1rem;
+    font-size: 1.1rem;
+}
+
+/* Visual Map */
+.world-map-visual {
+    height: 200px;
+    border-radius: 12px;
+    background: radial-gradient(circle at center, rgba(123, 47, 255, 0.1) 0%, rgba(2, 5, 8, 0.4) 100%);
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    position: relative;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.globe-circle {
+    width: 140px;
+    height: 140px;
+    border-radius: 50%;
+    border: 1px solid rgba(0, 212, 255, 0.3);
+    position: relative;
+    animation: rotateGlobe 20s linear infinite;
+}
+
+.globe-grid {
+    position: absolute;
+    inset: 0;
+    border-radius: 50%;
+    border-left: 1px solid rgba(0, 212, 255, 0.1);
+    border-right: 1px solid rgba(0, 212, 255, 0.1);
+    transform: rotate(45deg);
+}
+
+.globe-pin {
+    position: absolute;
+    top: 30%;
+    right: 30%;
+    width: 8px;
+    height: 8px;
+    background: var(--cyan);
+    border-radius: 50%;
+    box-shadow: 0 0 10px var(--cyan);
+}
+
+.globe-pulse {
+    position: absolute;
+    top: calc(30% - 11px);
+    right: calc(30% - 11px);
+    width: 30px;
+    height: 30px;
+    border: 1px solid var(--cyan);
+    border-radius: 50%;
+    animation: pulseGlobe 2s ease-out infinite;
+}
+
+@keyframes rotateGlobe {
+    from {
+        transform: rotate(0deg);
+    }
+
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+@keyframes pulseGlobe {
+    0% {
+        transform: scale(0);
+        opacity: 1;
+    }
+
+    100% {
+        transform: scale(1);
+        opacity: 0;
+    }
+}
+
+/* FAQ Section */
+.cp-faq-section {
+    padding: 5rem 0;
+    background: rgba(4, 7, 12, 0.5);
+    border-top: 1px solid rgba(255, 255, 255, 0.03);
+}
+
+.faq-header {
+    text-align: center;
+    margin-bottom: 3rem;
+}
+
+.faq-header h2 {
+    font-size: 2.2rem;
+    font-weight: 800;
+}
+
+.faq-list {
+    max-width: 800px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.faq-item {
+    background: rgba(255, 255, 255, 0.02);
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    border-radius: 12px;
+    overflow: hidden;
+    transition: var(--transition);
+}
+
+.faq-item:hover {
+    background: rgba(255, 255, 255, 0.04);
+}
+
+.faq-item.open {
+    border-color: rgba(0, 212, 255, 0.3);
+}
+
+.faq-q {
+    padding: 1.5rem 2rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    cursor: pointer;
+}
+
+.faq-q h3 {
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: #fff;
+    margin: 0;
+}
+
+.faq-icon {
+    font-size: 1.5rem;
+    color: var(--cyan);
+    font-weight: 300;
+}
+
+.faq-a {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.3s ease-in-out;
+    background: rgba(0, 212, 255, 0.02);
+}
+
+.faq-item.open .faq-a {
+    max-height: 300px;
+    /* arbitrary large enough height */
+}
+
+.faq-a p {
+    padding: 0 2rem 1.5rem;
+    color: var(--text-secondary);
+    line-height: 1.7;
+    margin: 0;
+}
+
+@media (max-width: 1024px) {
+    .cp-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+@media (max-width: 768px) {
+    .cp-card {
+        padding: 2rem;
+    }
+
+    .cp-form-row {
+        grid-template-columns: 1fr;
+    }
+
+    .cp-hero {
+        padding: 6rem 1rem 4rem;
+    }
+
+    .cp-container {
+        padding: 0 1rem;
+    }
+
+    .faq-q {
+        padding: 1.25rem 1rem;
+    }
+
+    .faq-a p {
+        padding: 0 1rem 1.25rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .cp-card {
+        padding: 1.5rem;
+    }
+
+    .cp-title {
+        font-size: 2.2rem;
+    }
+
+    .method-pt {
+        flex-direction: column;
+        align-items: flex-start;
+        text-align: left;
+    }
+
+    .method-val {
+        font-size: 1rem;
+    }
+}

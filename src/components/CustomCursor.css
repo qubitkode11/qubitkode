@@ -1,0 +1,81 @@
+@media (pointer: fine) {
+  * { cursor: none !important; }
+}
+
+/* ── Main cursor ───────────────────────────────── */
+.custom-cursor {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 0;
+  height: 0;
+  pointer-events: none;
+  z-index: 2147483647;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  will-change: transform;
+}
+
+.custom-cursor.visible { opacity: 1; }
+
+.cursor-logo-wrapper {
+  position: absolute;
+  top: -16px;
+  left: -16px;
+  width: 32px;
+  height: 32px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: rgba(10, 21, 32, 0.7);
+  backdrop-filter: blur(6px);
+  border: 1px solid rgba(0, 212, 255, 0.5);
+  border-radius: 50%;
+  box-shadow: 0 0 12px rgba(0, 212, 255, 0.3), inset 0 0 8px rgba(0, 212, 255, 0.05);
+  transition:
+    width 0.2s cubic-bezier(0.175, 0.885, 0.32, 1.275),
+    height 0.2s cubic-bezier(0.175, 0.885, 0.32, 1.275),
+    top 0.2s cubic-bezier(0.175, 0.885, 0.32, 1.275),
+    left 0.2s cubic-bezier(0.175, 0.885, 0.32, 1.275),
+    background 0.2s ease,
+    border-color 0.2s ease,
+    box-shadow 0.2s ease;
+}
+
+.cursor-logo {
+  width: 65%;
+  height: 65%;
+  object-fit: contain;
+  transition: transform 0.2s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.custom-cursor.hovering .cursor-logo-wrapper {
+  width: 54px;
+  height: 54px;
+  top: -27px;
+  left: -27px;
+  background: rgba(0, 212, 255, 0.12);
+  border-color: var(--cyan);
+  box-shadow: 0 0 30px rgba(0, 212, 255, 0.5), 0 0 60px rgba(0, 212, 255, 0.15);
+}
+
+.custom-cursor.hovering .cursor-logo { transform: scale(1.1); }
+
+.custom-cursor.clicking .cursor-logo-wrapper {
+  transform: scale(0.82);
+  background: rgba(0, 212, 255, 0.3);
+  box-shadow: 0 0 40px rgba(0, 212, 255, 0.7), 0 0 80px rgba(0, 212, 255, 0.2);
+}
+
+/* ── Trailing glow dots ────────────────────────── */
+.cursor-trail-dot {
+  position: fixed;
+  border-radius: 50%;
+  background: rgba(0, 212, 255, 0.7);
+  pointer-events: none;
+  z-index: 2147483646;
+  transform: translate(-50%, -50%);
+  box-shadow: 0 0 6px rgba(0, 212, 255, 0.5);
+  transition: opacity 0.1s ease;
+  will-change: transform;
+}

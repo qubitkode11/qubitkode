@@ -1,0 +1,31 @@
+{
+  "short_name": "QubitKode",
+  "name": "QubitKode — We Code The Future",
+  "description": "Premier technology agency for Web, Mobile, AI & Game Development",
+  "icons": [
+    {
+      "src": "logo.png",
+      "sizes": "64x64 32x32 24x24 16x16",
+      "type": "image/png"
+    },
+    {
+      "src": "logo192.png",
+      "type": "image/png",
+      "sizes": "192x192",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "logo512.png",
+      "type": "image/png",
+      "sizes": "512x512",
+      "purpose": "any maskable"
+    }
+  ],
+  "start_url": ".",
+  "display": "standalone",
+  "theme_color": "#020508",
+  "background_color": "#020508",
+  "lang": "en",
+  "orientation": "portrait-primary",
+  "categories": ["technology", "business", "productivity"]
+}

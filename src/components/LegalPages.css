@@ -1,0 +1,110 @@
+.legal-page {
+    background-color: #050505;
+    color: var(--text-primary);
+    min-height: 100vh;
+    padding-top: 80px;
+    /* Account for navbar */
+    font-family: 'Space Grotesk', sans-serif;
+}
+
+.legal-container {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 0 2rem;
+}
+
+/* Header */
+.legal-header {
+    padding: 5rem 0 3rem;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+    background: rgba(255, 255, 255, 0.01);
+}
+
+.legal-header .section-tag {
+    font-size: 0.85rem;
+    color: var(--cyan);
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    font-weight: 700;
+    display: inline-block;
+    vertical-align: middle;
+    margin-bottom: 1rem;
+    padding: 0.35rem 0.85rem;
+    background: rgba(0, 212, 255, 0.1);
+    border-radius: 4px;
+    border: 1px solid rgba(0, 212, 255, 0.2);
+}
+
+.legal-title {
+    font-size: clamp(2.5rem, 5vw, 4rem);
+    font-weight: 800;
+    margin-bottom: 1rem;
+    color: #fff;
+    letter-spacing: -0.02em;
+}
+
+.legal-subtitle {
+    color: var(--text-muted);
+    font-size: 1.1rem;
+}
+
+/* Content Body */
+.legal-body {
+    padding: 4rem 0 6rem;
+}
+
+.legal-content h2 {
+    font-size: 1.5rem;
+    color: white;
+    margin-top: 2.5rem;
+    margin-bottom: 1rem;
+    font-weight: 700;
+}
+
+.legal-content h2:first-child {
+    margin-top: 0;
+}
+
+.legal-content p {
+    color: var(--text-muted);
+    line-height: 1.8;
+    font-size: 1.05rem;
+    margin-bottom: 1.5rem;
+}
+
+.legal-content ul {
+    color: var(--text-muted);
+    line-height: 1.8;
+    font-size: 1.05rem;
+    margin-bottom: 1.5rem;
+    padding-left: 1.5rem;
+}
+
+.legal-content li {
+    margin-bottom: 0.5rem;
+}
+
+.legal-content strong {
+    color: #ddd;
+}
+
+.legal-content a {
+    color: var(--cyan);
+    text-decoration: none;
+    border-bottom: 1px solid transparent;
+    transition: var(--transition);
+}
+
+.legal-content a:hover {
+    border-bottom-color: var(--cyan);
+}
+
+@media (max-width: 768px) {
+    .legal-header {
+        padding: 3rem 0 2rem;
+    }
+
+    .legal-body {
+        padding: 2rem 0 4rem;
+    }
+}

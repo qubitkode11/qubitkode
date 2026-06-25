@@ -1,0 +1,281 @@
+.team-section {
+    position: relative;
+    z-index: 1;
+    background: linear-gradient(180deg, rgba(6, 13, 20, 0.3) 0%, rgba(2, 5, 8, 0.8) 100%);
+}
+
+.team-section .section-container {
+    padding-top: 1rem;
+    /* Decreased gap from About Section */
+    padding-bottom: 5rem;
+}
+
+/* Slider Layout */
+.team-slider-wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 3rem;
+    position: relative;
+    max-width: 100%;
+    margin: 0 auto;
+}
+
+.slider-btn {
+    width: 54px;
+    height: 54px;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    color: var(--cyan);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    z-index: 20;
+    transition: all 0.3s ease;
+    backdrop-filter: blur(8px);
+}
+
+.slider-btn:hover {
+    background: rgba(0, 212, 255, 0.1);
+    border-color: var(--cyan);
+    transform: scale(1.1);
+    box-shadow: 0 0 20px rgba(0, 212, 255, 0.4);
+}
+
+.team-slider-track {
+    position: relative;
+    width: 380px;
+    height: 480px;
+    /* Explicit height for absolute children */
+    perspective: 1200px;
+}
+
+/* Base Team Card */
+.team-card {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(10, 15, 25, 0.6);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    border-radius: 16px;
+    padding: 3.5rem 2.5rem 2.5rem;
+    text-align: center;
+    transition: all 0.6s cubic-bezier(0.2, 0.8, 0.2, 1);
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+/* Slider States */
+.slide-active {
+    transform: translateX(0) translateZ(0) scale(1.05);
+    z-index: 10;
+    opacity: 1;
+    filter: blur(0px);
+    box-shadow: 0 25px 60px rgba(0, 0, 0, 0.6);
+    border-color: rgba(255, 255, 255, 0.15);
+}
+
+.slide-prev {
+    transform: translateX(-65%) translateZ(-150px) scale(0.85) rotateY(10deg);
+    z-index: 5;
+    opacity: 0.35;
+    filter: blur(6px);
+    pointer-events: none;
+    /* Can't interact with blurred cards */
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
+}
+
+.slide-next {
+    transform: translateX(65%) translateZ(-150px) scale(0.85) rotateY(-10deg);
+    z-index: 5;
+    opacity: 0.35;
+    filter: blur(6px);
+    pointer-events: none;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
+}
+
+/* Glowing Top Edge */
+.team-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 6px;
+    background: var(--grad);
+    opacity: 0.8;
+    box-shadow: 0 0 25px var(--grad);
+    transition: all 0.6s ease;
+}
+
+/* Inner Background Glow for active */
+.slide-active::after {
+    content: '';
+    position: absolute;
+    top: -50px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 250px;
+    height: 250px;
+    background: var(--grad);
+    filter: blur(100px);
+    opacity: 0.25;
+    pointer-events: none;
+    transition: all 0.6s ease;
+}
+
+/* Typography elements */
+.member-badge {
+    position: relative;
+    z-index: 2;
+    display: inline-block;
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 100px;
+    padding: 0.4rem 1.25rem;
+    font-size: 0.8rem;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--text-primary);
+    margin-bottom: 2.5rem;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+    transition: all 0.4s ease;
+}
+
+.slide-active .member-badge {
+    background: var(--grad);
+    color: #020508;
+    border-color: transparent;
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.4);
+}
+
+.member-name {
+    position: relative;
+    z-index: 2;
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 1.6rem;
+    font-weight: 800;
+    color: var(--text-primary);
+    margin-bottom: 0.5rem;
+}
+
+.member-role {
+    position: relative;
+    z-index: 2;
+    font-size: 0.95rem;
+    color: var(--text-primary);
+    opacity: 0.8;
+    font-weight: 600;
+    letter-spacing: 0.05em;
+    margin-bottom: 1.5rem;
+    text-transform: uppercase;
+    background: var(--grad);
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.member-bio {
+    position: relative;
+    z-index: 2;
+    font-size: 1rem;
+    color: var(--text-secondary);
+    line-height: 1.7;
+    margin-bottom: 2rem;
+    flex-grow: 1;
+}
+
+.member-socials {
+    position: relative;
+    z-index: 2;
+    display: flex;
+    justify-content: center;
+    gap: 0.75rem;
+    margin-top: auto;
+}
+
+.social-link {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 44px;
+    height: 44px;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    color: var(--text-muted);
+    transition: all 0.3s ease;
+}
+
+.slide-active .social-link:hover {
+    background: var(--text-primary);
+    border-color: var(--text-primary);
+    color: #020508;
+    transform: translateY(-4px);
+    box-shadow: 0 10px 25px rgba(255, 255, 255, 0.15);
+}
+
+.card-grid-bg {
+    position: absolute;
+    inset: 0;
+    background-image:
+        linear-gradient(rgba(255, 255, 255, 0.02) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255, 255, 255, 0.02) 1px, transparent 1px);
+    background-size: 24px 24px;
+    pointer-events: none;
+    border-radius: inherit;
+    z-index: 0;
+}
+
+@media (max-width: 1024px) {
+    .team-slider-wrapper {
+        gap: 1.5rem;
+    }
+
+    .slide-prev {
+        transform: translateX(-50%) translateZ(-150px) scale(0.85);
+        opacity: 0.15;
+        /* Less visible on tablets */
+    }
+
+    .slide-next {
+        transform: translateX(50%) translateZ(-150px) scale(0.85);
+        opacity: 0.15;
+    }
+}
+
+@media (max-width: 768px) {
+    .team-slider-wrapper {
+        gap: 0.5rem;
+    }
+
+    .team-slider-track {
+        width: 300px;
+        height: 440px;
+    }
+
+    .slide-prev {
+        transform: translateX(-20%) translateZ(-100px) scale(0.8);
+        opacity: 0;
+        /* Hidden on very small mobile to prevent clutter */
+    }
+
+    .slide-next {
+        transform: translateX(20%) translateZ(-100px) scale(0.8);
+        opacity: 0;
+    }
+
+    .slider-btn {
+        width: 40px;
+        height: 40px;
+    }
+}

@@ -1,0 +1,174 @@
+.floating-contact {
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    z-index: 9999;
+    animation: slideUpFade 1s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
+}
+
+@keyframes slideUpFade {
+    0% {
+        opacity: 0;
+        transform: translateY(50px);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.floating-btn {
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    text-decoration: none;
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.5);
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    position: relative;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.floating-btn svg {
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.floating-btn::before, .floating-btn::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    border-radius: 50%;
+    z-index: -1;
+    transition: all 0.4s ease;
+}
+
+/* Base Email Button */
+.fb-email {
+    background: #00d4ff;
+    color: #020508;
+}
+
+.fb-email::before {
+    box-shadow: 0 0 30px rgba(0, 212, 255, 0.6);
+    opacity: 0;
+}
+
+.fb-email:hover {
+    transform: translateY(-8px) scale(1.1);
+    border-color: rgba(0, 212, 255, 0.5);
+}
+
+.fb-email:hover::before {
+    opacity: 1;
+}
+
+.fb-email:hover svg {
+    transform: scale(1.15) rotate(-10deg);
+}
+
+/* Base WhatsApp Button with Continuous Pulse */
+.fb-whatsapp {
+    background: #25D366;
+    animation: pulseGlow 2.5s infinite;
+}
+
+@keyframes pulseGlow {
+    0% {
+        box-shadow: 0 0 0 0 rgba(37, 211, 102, 0.6);
+    }
+    70% {
+        box-shadow: 0 0 0 15px rgba(37, 211, 102, 0);
+    }
+    100% {
+        box-shadow: 0 0 0 0 rgba(37, 211, 102, 0);
+    }
+}
+
+.fb-whatsapp::before {
+    box-shadow: 0 0 30px rgba(37, 211, 102, 0.8);
+    opacity: 0;
+}
+
+.fb-whatsapp:hover {
+    transform: translateY(-8px) scale(1.1);
+    border-color: rgba(37, 211, 102, 0.5);
+    animation: none; /* Pause pulse on hover */
+}
+
+.fb-whatsapp:hover::before {
+    opacity: 1;
+}
+
+.fb-whatsapp:hover svg {
+    transform: scale(1.15) rotate(10deg);
+}
+
+/* Tooltip on hover */
+.floating-tooltip {
+    position: absolute;
+    right: 80px;
+    top: 50%;
+    transform: translateY(-50%) translateX(15px);
+    background: rgba(10, 21, 32, 0.95);
+    color: #fff;
+    padding: 8px 16px;
+    border-radius: 8px;
+    font-size: 14px;
+    font-family: 'Inter', sans-serif;
+    font-weight: 500;
+    white-space: nowrap;
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.5);
+    pointer-events: none;
+    backdrop-filter: blur(10px);
+}
+
+/* Triangle for tooltip */
+.floating-tooltip::after {
+    content: '';
+    position: absolute;
+    right: -6px;
+    top: 50%;
+    transform: translateY(-50%);
+    border-top: 6px solid transparent;
+    border-bottom: 6px solid transparent;
+    border-left: 6px solid rgba(10, 21, 32, 0.95);
+}
+
+.floating-btn:hover .floating-tooltip {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(-50%) translateX(0);
+}
+
+@media (max-width: 768px) {
+    .floating-contact {
+        bottom: 25px;
+        right: 25px;
+        gap: 15px;
+    }
+
+    .floating-btn {
+        width: 55px;
+        height: 55px;
+    }
+
+    .floating-btn svg {
+        width: 22px;
+        height: 22px;
+    }
+
+    /* Disable tooltips on mobile to prevent overflow */
+    .floating-tooltip {
+        display: none;
+    }
+}
